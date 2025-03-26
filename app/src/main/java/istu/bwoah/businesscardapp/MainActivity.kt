@@ -7,10 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -36,29 +35,39 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BusinessCardScreen() {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xff3aabab)),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(Color(0xff3aabab))
+            .padding(16.dp)
     ) {
-        ProfileImage()
-        Text(
-            text = "Mechkov Igor",
-            fontSize = 42.sp,
-            color = Color.Black,
-        )
-        Text(
-            text = "DevOps engineer",
-            fontSize = 24.sp,
-            color = Color.DarkGray
-        )
-        Spacer(modifier = Modifier.height(24.dp))
-        ContactInfo()
-    }
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            ProfileImage()
 
+            Text(
+                text = "Mechkov Igor",
+                fontSize = 42.sp,
+                color = Color.Black,
+            )
+            Text(
+                text = "DevOps engineer",
+                fontSize = 24.sp,
+                color = Color.DarkGray
+            )
+        }
+
+        ContactInfo(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 32.dp)
+        )
+    }
 }
+
 
 @Composable
 fun ProfileImage() {
@@ -72,14 +81,14 @@ fun ProfileImage() {
 }
 
 @Composable
-fun ContactInfo() {
+fun ContactInfo(modifier: Modifier = Modifier) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Bottom,
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "+7 (912) 462 78 50", fontSize = 16.sp)
-        Text(text = "mechkov.igor04@gmail.com", fontSize = 16.sp)
-        Text(text = "github.com/WolfOfBad", fontSize = 16.sp)
+        Text(text = "+7 (912) 462 78 50", fontSize = 16.sp, color = Color.Black)
+        Text(text = "mechkov.igor04@gmail.com", fontSize = 16.sp, color = Color.Black)
+        Text(text = "github.com/WolfOfBad", fontSize = 16.sp, color = Color.Black)
     }
 }
 
